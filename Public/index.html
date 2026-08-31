@@ -61,14 +61,12 @@
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
-
 <!-- WhatsApp Float Button -->
 <a href="https://wa.me/213XXXXXXXXX?text=مرحباً%20فلاش%20ماركت" target="_blank" 
    class="fixed bottom-20 left-5 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/30 animate-float transition hover:scale-110"
    title="تواصل عبر واتساب">
     <i class="fa-brands fa-whatsapp text-2xl"></i>
 </a>
-
 <nav class="bg-slate-900/95 backdrop-blur border-b border-slate-800 px-4 py-2.5 flex flex-wrap justify-between items-center gap-2 sticky top-0 z-50">
     <div class="flex items-center space-x-2 space-x-reverse">
         <div class="bg-gradient-to-tr from-brand-600 to-amber-400 p-2 rounded-xl shadow-lg shadow-brand-500/20">
@@ -89,7 +87,6 @@
     </div>
     <div class="flex items-center space-x-2 space-x-reverse" id="nav-buttons"></div>
 </nav>
-
 <!-- Countdown Urgency Banner -->
 <div id="urgency-banner" class="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white px-4 py-2 text-center text-xs font-bold relative overflow-hidden">
     <div class="absolute inset-0 bg-white/10 animate-pulse"></div>
@@ -97,10 +94,9 @@
         <i class="fa-solid fa-fire"></i>
         <span>🔥 عرض محدود: خصم 20% على كل المتجر — ينتهي خلال:</span>
         <span id="countdown-timer" class="font-mono text-sm bg-black/20 px-3 py-0.5 rounded-lg countdown-pulse">05:43:21</span>
-        <button onclick="document.getElementById('urgency-banner').remove()" class="mr-2 text-white/70 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+        <button id="btn-close-urgency" class="mr-2 text-white/70 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
     </span>
 </div>
-
 <div id="portal-customer-view" class="flex-1 flex flex-col">
     <header class="bg-slate-900/80 backdrop-blur border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
@@ -121,7 +117,6 @@
             </div>
         </div>
     </header>
-
     <!-- Mobile Search -->
     <div class="sm:hidden px-4 py-3 bg-slate-900/50">
         <div class="relative">
@@ -130,7 +125,6 @@
             <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-2.5 text-slate-500 text-sm"></i>
         </div>
     </div>
-
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         <!-- Hero -->
         <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 relative overflow-hidden shadow-2xl">
@@ -142,7 +136,6 @@
                 <p class="text-xs sm:text-sm text-slate-400">بحث ذكي، فلترة متقدمة، مفضلة، وتوصيل لكل الولايات.</p>
             </div>
         </div>
-
         <!-- Filters Bar -->
         <div class="bg-slate-900 rounded-2xl border border-slate-800 p-4 space-y-4">
             <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
@@ -181,25 +174,21 @@
                 </div>
             </div>
         </div>
-
         <!-- Results Count -->
         <div class="flex justify-between items-center">
             <h3 class="text-lg font-bold text-slate-100"><i class="fa-solid fa-store text-brand-500 ml-2"></i> المنتجات المتاحة</h3>
             <span id="results-count" class="text-xs text-slate-500 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">جاري التحميل...</span>
         </div>
-
         <!-- Products Grid -->
         <div id="guest-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
-
         <!-- No Results -->
         <div id="no-results" class="hidden text-center py-16">
             <i class="fa-solid fa-magnifying-glass text-4xl text-slate-700 mb-4"></i>
             <p class="text-slate-500 text-sm">لا توجد منتجات تطابق بحثك. جرّب كلمات مختلفة أو راجع الفلاتر.</p>
-            <button onclick="resetAllFilters()" class="mt-4 text-brand-400 text-xs font-bold hover:text-brand-300">إعادة ضبط الفلاتر</button>
+            <button id="btn-reset-filters" class="mt-4 text-brand-400 text-xs font-bold hover:text-brand-300">إعادة ضبط الفلاتر</button>
         </div>
     </main>
 </div>
-
 <div id="portal-vendor-view" class="flex-1 flex flex-col hidden">
     <header class="bg-slate-900 border-b border-cyan-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
@@ -275,7 +264,6 @@
         </div>
     </main>
 </div>
-
 <div id="portal-admin-view" class="flex-1 flex flex-col hidden">
     <header class="bg-slate-900 border-b border-purple-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
@@ -340,7 +328,6 @@
         </div>
     </main>
 </div>
-
 <!-- Wishlist Drawer -->
 <div id="wishlist-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex justify-start hidden">
     <div class="w-full max-w-md bg-slate-900 h-full border-l border-slate-800 p-6 flex flex-col shadow-2xl overflow-y-auto">
@@ -352,13 +339,12 @@
         </div>
         <div id="wishlist-items-list" class="space-y-3 flex-1"></div>
         <div class="border-t border-slate-800 pt-4 mt-4">
-            <button onclick="moveWishlistToCart()" class="w-full bg-pink-600 hover:bg-pink-500 text-white font-bold py-3 rounded-xl transition shadow-lg">
+            <button id="btn-move-wishlist" class="w-full bg-pink-600 hover:bg-pink-500 text-white font-bold py-3 rounded-xl transition shadow-lg">
                 <i class="fa-solid fa-cart-plus ml-2"></i> نقل الكل للسلة
             </button>
         </div>
     </div>
 </div>
-
 <!-- Guest Cart Drawer -->
 <div id="guest-cart-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex justify-end hidden">
     <div class="w-full max-w-md bg-slate-900 h-full border-r border-slate-800 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto">
@@ -370,7 +356,6 @@
                 <button id="btn-close-cart" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             <div id="guest-cart-items-list" class="space-y-3 max-h-[25vh] overflow-y-auto pr-1"></div>
-
             <!-- Shipping Calculator -->
             <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
                 <h4 class="text-xs font-bold text-cyan-400 border-b border-slate-800 pb-1"><i class="fa-solid fa-truck ml-1"></i> حساب التوصيل:</h4>
@@ -390,7 +375,6 @@
                     احسب تكلفة التوصيل
                 </button>
             </div>
-
             <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
                 <h4 class="text-xs font-bold text-amber-400 border-b border-slate-800 pb-1">بيانات التسليم:</h4>
                 <div>
@@ -426,7 +410,6 @@
                     <textarea id="guest-address" rows="2" placeholder="حي ..., عمارة ..., باب ..." class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-white resize-none"></textarea>
                 </div>
             </div>
-
             <!-- Payment Methods -->
             <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
                 <h4 class="text-xs font-bold text-emerald-400 border-b border-slate-800 pb-1"><i class="fa-solid fa-credit-card ml-1"></i> طريقة الدفع:</h4>
@@ -467,7 +450,6 @@
         </div>
     </div>
 </div>
-
 <!-- Vendor Auth Modal -->
 <div id="vendor-auth-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <div class="bg-slate-900 w-full max-w-md rounded-2xl border border-cyan-500/30 p-6 space-y-4 shadow-2xl">
@@ -495,7 +477,6 @@
         </div>
     </div>
 </div>
-
 <!-- Admin Auth Modal -->
 <div id="admin-auth-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <div class="bg-slate-900 w-full max-w-md rounded-2xl border border-purple-500/30 p-6 space-y-4 shadow-2xl">
@@ -516,7 +497,6 @@
         </div>
     </div>
 </div>
-
 <!-- Vendor Add Product Modal -->
 <div id="vendor-add-prod-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <div class="bg-slate-900 w-full max-w-lg rounded-2xl border border-slate-800 p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
@@ -563,7 +543,6 @@
         </div>
     </div>
 </div>
-
 <!-- Vendor Profile Modal -->
 <div id="vendor-profile-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <div class="bg-slate-900 w-full max-w-md rounded-2xl border border-cyan-500/30 p-6 space-y-4 shadow-2xl">
@@ -589,7 +568,6 @@
         </div>
     </div>
 </div>
-
 <!-- Staff Management Modal -->
 <div id="staff-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <div class="bg-slate-900 w-full max-w-lg rounded-2xl border border-cyan-500/30 p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
@@ -624,7 +602,6 @@
         </div>
     </div>
 </div>
-
 <!-- Print Order Modal -->
 <div id="print-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <div class="bg-slate-900 w-full max-w-2xl rounded-2xl border border-slate-800 p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
@@ -641,7 +618,6 @@
         </div>
     </div>
 </div>
-
 <!-- Product Detail Modal — ENHANCED with Reviews & Cross-sell -->
 <div id="product-detail-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <div class="bg-slate-900 w-full max-w-2xl rounded-2xl border border-slate-800 p-0 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
@@ -669,13 +645,11 @@
                 </div>
             </div>
             <p id="pd-desc" class="text-xs text-slate-400 leading-relaxed"></p>
-
             <!-- Urgency Badge -->
             <div id="pd-urgency" class="hidden bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2 flex items-center gap-2">
                 <i class="fa-solid fa-fire text-red-400"></i>
                 <span class="text-xs text-red-400 font-bold">🔥 بقي <span id="pd-stock-urgency">3</span> قطع فقط — 15 مشاهدة الآن</span>
             </div>
-
             <div class="flex items-center justify-between pt-2">
                 <div class="flex items-center space-x-2 space-x-reverse">
                     <button id="btn-pd-minus" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700"><i class="fa-solid fa-minus text-xs"></i></button>
@@ -692,13 +666,11 @@
                     <i class="fa-solid fa-cart-plus ml-1"></i> أضف للسلة
                 </button>
             </div>
-
             <!-- Cross-sell Section -->
             <div id="pd-cross-sell" class="border-t border-slate-800 pt-4 hidden">
                 <h4 class="text-xs font-bold text-slate-300 mb-3"><i class="fa-solid fa-layer-group text-brand-400 ml-1"></i> منتجات قد تعجبك</h4>
                 <div id="pd-cross-sell-grid" class="grid grid-cols-3 gap-2"></div>
             </div>
-
             <!-- Reviews Section -->
             <div class="border-t border-slate-800 pt-4">
                 <h4 class="text-xs font-bold text-slate-300 mb-3"><i class="fa-solid fa-star text-amber-400 ml-1"></i> تقييمات الزبائن</h4>
@@ -721,20 +693,15 @@
         </div>
     </div>
 </div>
-
 <!-- Toast Container -->
 <div id="toast-container" class="fixed bottom-5 left-5 z-50 space-y-2 pointer-events-none"></div>
-
 <script>
 (function () {
     'use strict';
-
     const API_BASE = '';
     const CURRENCY = 'د.ج';
     const LS_CART_KEY = 'fm_guest_cart';
     const LS_WISH_KEY = 'fm_guest_wishlist';
-    const LS_IDEM_KEY = 'fm_idem_key';
-
     const WILAYAS = [
         { code: '16', name: 'الجزائر العاصمة' },
         { code: '31', name: 'وهران' },
@@ -745,7 +712,6 @@
         { code: '05', name: 'باتنة' },
         { code: '17', name: 'الجلفة' }
     ];
-
     const MUNICIPALITIES = {
         '16': ['الجزائر الوسطى', 'سيدي امحمد', 'باب الزوار', 'الرويبة', 'الحراش', 'براقي', 'الدار البيضاء', 'بئر مراد رايس', 'بوزريعة', 'المدنية'],
         '31': ['وهران', 'وادي تليلات', 'بئر الجير', 'السانية', 'أرزيو', 'بطيوة', 'عين الترك', 'قديل', 'حاسي بن عقبة'],
@@ -756,14 +722,11 @@
         '05': ['باتنة', 'عين التوتة', 'مروانة', 'رأس العيون', 'القصر', 'نقاوس', 'الجزار', 'بوزينة', 'تيمقاد'],
         '17': ['الجلفة', 'عين وسارة', 'مسعد', 'الادريسية', 'دار الشيوخ', 'حاسي بحبح', 'سيدي لعجال', 'الشارف']
     };
-
     const SHIPPING_RATES = {
         '16': 400, '31': 600, '25': 550, '23': 500, '09': 350, '19': 450, '05': 500, '17': 600
     };
 
-    // ══════════════════════════════════════════════════════════════
     // UTILITIES
-    // ══════════════════════════════════════════════════════════════
     function escapeHtml(str) {
         if (str == null) return '';
         return String(str)
@@ -773,20 +736,37 @@
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#039;');
     }
-
     function formatPrice(n) {
         return Number(n || 0).toLocaleString('ar-DZ') + ' ' + CURRENCY;
     }
-
-    function getToken() { return localStorage.getItem('fm_token'); }
-    function setToken(t) { localStorage.setItem('fm_token', t); }
-    function clearToken() { localStorage.removeItem('fm_token'); }
-
+    let _memToken = null;
+    function getToken() { return _memToken; }
+    function setToken(t) { _memToken = t; }
+    function clearToken() { _memToken = null; }
+    // SECURITY: Migrate any legacy localStorage token to memory and purge it from disk
+    (function() {
+        var legacy = localStorage.getItem('fm_token');
+        if (legacy) { _memToken = legacy; localStorage.removeItem('fm_token'); }
+    })();
     function getCsrfToken() {
         var meta = document.querySelector('meta[name="csrf-token"]');
         return meta ? meta.content : '';
     }
-
+    function showToast(msg, type) {
+        type = type || 'info';
+        var container = document.getElementById('toast-container');
+        if (!container) return;
+        var el = document.createElement('div');
+        var bg = type === 'error' ? 'bg-red-600' : (type === 'success' ? 'bg-emerald-600' : 'bg-slate-800 border border-slate-700');
+        el.className = 'px-4 py-2.5 rounded-xl text-xs font-bold text-white shadow-2xl transition transform translate-y-2 opacity-0 pointer-events-auto flex items-center space-x-2 space-x-reverse ' + bg;
+        el.innerHTML = (type === 'error' ? '<i class="fa-solid fa-circle-exclamation"></i>' : (type === 'success' ? '<i class="fa-solid fa-circle-check"></i>' : '<i class="fa-solid fa-circle-info"></i>')) + '<span>' + escapeHtml(msg) + '</span>';
+        container.appendChild(el);
+        setTimeout(function() { el.classList.remove('translate-y-2', 'opacity-0'); }, 10);
+        setTimeout(function() {
+            el.classList.add('opacity-0', 'translate-y-2');
+            setTimeout(function() { el.remove(); }, 300);
+        }, 3000);
+    }
     async function apiFetch(url, options) {
         options = options || {};
         var headers = { 'Content-Type': 'application/json' };
@@ -797,9 +777,11 @@
         if (token) headers['Authorization'] = 'Bearer ' + token;
         var csrf = getCsrfToken();
         if (csrf) headers['X-CSRF-Token'] = csrf;
-
+        var controller = new AbortController();
+        var timeoutId = setTimeout(function() { controller.abort(); }, 10000);
         try {
-            var res = await fetch(API_BASE + url, { method: options.method || 'GET', headers: headers, body: options.body });
+            var res = await fetch(API_BASE + url, { method: options.method || 'GET', headers: headers, body: options.body, signal: controller.signal });
+            clearTimeout(timeoutId);
             var data = {};
             var contentType = res.headers.get('content-type') || '';
             if (contentType.indexOf('application/json') !== -1) {
@@ -808,13 +790,16 @@
             if (!res.ok) throw new Error(data.error || ('HTTP ' + res.status));
             return data;
         } catch (err) {
+            clearTimeout(timeoutId);
+            if (err.name === 'AbortError') {
+                throw new Error('انتهت مهلة الطلب. أعد المحاولة.');
+            }
             if (err.message === 'Failed to fetch') {
                 throw new Error('تعذر الاتصال بالخادم. تأكد من تشغيل الخادم.');
             }
             throw err;
         }
     }
-
     function compressImage(file, maxWidth, maxHeight, quality) {
         maxWidth = maxWidth || 800;
         maxHeight = maxHeight || 800;
@@ -852,9 +837,15 @@
         });
     }
 
-    // ══════════════════════════════════════════════════════════════
+    function debounce(fn, ms) {
+        var t;
+        return function() {
+            clearTimeout(t);
+            t = setTimeout(fn, ms);
+        };
+    }
+
     // STATE
-    // ══════════════════════════════════════════════════════════════
     var activeVendor = null;
     var activeAdmin = null;
     var currentUser = null;
@@ -870,9 +861,7 @@
     var reviewRating = 0;
     var shippingCost = 0;
 
-    // ══════════════════════════════════════════════════════════════
     // PERSISTENCE
-    // ══════════════════════════════════════════════════════════════
     function loadGuestCart() {
         try {
             var raw = localStorage.getItem(LS_CART_KEY);
@@ -883,7 +872,6 @@
     function saveGuestCart() {
         localStorage.setItem(LS_CART_KEY, JSON.stringify(guestCart));
     }
-
     function loadWishlist() {
         try {
             var raw = localStorage.getItem(LS_WISH_KEY);
@@ -910,9 +898,7 @@
         }
     }
 
-    // ══════════════════════════════════════════════════════════════
     // NAVIGATION
-    // ══════════════════════════════════════════════════════════════
     function renderNavButtons() {
         var nav = document.getElementById('nav-buttons');
         if (!nav) return;
@@ -929,12 +915,10 @@
                 '<i class="fa-solid fa-user-shield ml-1.5"></i> لوحة الإدارة</button>';
         }
         nav.innerHTML = html;
-
         bindIfExists('nav-customer', 'click', function() { switchPortal('customer'); });
         bindIfExists('nav-vendor', 'click', function() { switchPortal('vendor'); });
         bindIfExists('nav-admin', 'click', function() { switchPortal('admin'); });
     }
-
     window.switchPortal = function(portalName) {
         closeAllModals();
         document.querySelectorAll('.portal-btn').forEach(function(btn) {
@@ -944,7 +928,6 @@
         document.getElementById('portal-customer-view').classList.add('hidden');
         document.getElementById('portal-vendor-view').classList.add('hidden');
         document.getElementById('portal-admin-view').classList.add('hidden');
-
         if (portalName === 'customer') {
             document.getElementById('portal-customer-view').classList.remove('hidden');
             var btn = document.getElementById('nav-customer');
@@ -970,7 +953,6 @@
             }
         }
     };
-
     function closeAllModals() {
         ['guest-cart-modal','vendor-auth-modal','admin-auth-modal','vendor-add-prod-modal',
          'vendor-profile-modal','staff-modal','print-modal','product-detail-modal','wishlist-modal'].forEach(function(id) {
@@ -978,20 +960,16 @@
             if (el) el.classList.add('hidden');
         });
     }
-
     function bindIfExists(id, event, handler) {
         var el = document.getElementById(id);
         if (el) el.addEventListener(event, handler);
     }
 
-    // ══════════════════════════════════════════════════════════════
     // DATA LOADING
-    // ══════════════════════════════════════════════════════════════
     async function loadProducts() {
         try {
             var data = await apiFetch('/api/products');
             allProducts = data.products || [];
-            // Seed demo reviews if none
             allProducts.forEach(function(p) {
                 if (!p.reviews) {
                     p.reviews = generateDemoReviews(p.id);
@@ -1009,36 +987,16 @@
             showToast('تعذر الاتصال بالخادم: ' + err.message, 'error');
         }
     }
-
     function generateDemoReviews(productId) {
-        var names = ['أحمد', 'محمد', 'خالد', 'سعيد', 'يوسف', 'عمر', 'فاطمة', 'عائشة'];
-        var comments = [
-            'منتج رائع جداً، أنصح به بشدة!',
-            'جودة ممتازة والتوصيل كان سريع.',
-            'السعر مناسب مقابل الجودة.',
-            'تجربة شراء ممتازة، شكراً فلاش ماركت.',
-            'المنتج وصل بحالة ممتازة، أنصح به.'
-        ];
-        var count = (productId % 3) + 2; // 2-4 reviews
-        var reviews = [];
-        for (var i = 0; i < count; i++) {
-            reviews.push({
-                name: names[(productId + i) % names.length],
-                rating: 4 + (i % 2),
-                comment: comments[(productId + i) % comments.length],
-                date: '2024-0' + ((i % 9) + 1) + '-15'
-            });
-        }
-        return reviews;
+        // SECURITY: Demo data removed in production. Backend must return real reviews.
+        return [];
     }
-
     async function loadOrders() {
         try {
             var data = await apiFetch('/api/orders');
             allOrders = data.orders || [];
         } catch (err) { /* silent */ }
     }
-
     async function loadStaff() {
         try {
             var data = await apiFetch('/api/staff');
@@ -1046,11 +1004,9 @@
         } catch (err) { staffList = []; }
     }
 
-    // ══════════════════════════════════════════════════════════════
     // COUNTDOWN TIMER
-    // ══════════════════════════════════════════════════════════════
     function startCountdown() {
-        var endTime = Date.now() + (5 * 60 * 60 * 1000 + 43 * 60 * 1000 + 21 * 1000); // 5:43:21 from now
+        var endTime = Date.now() + (5 * 60 * 60 * 1000 + 43 * 60 * 1000 + 21 * 1000);
         var el = document.getElementById('countdown-timer');
         if (!el) return;
         function update() {
@@ -1065,9 +1021,7 @@
         setInterval(update, 1000);
     }
 
-    // ══════════════════════════════════════════════════════════════
     // FILTERS & SEARCH
-    // ══════════════════════════════════════════════════════════════
     function getFilters() {
         return {
             search: (document.getElementById('global-search') ? document.getElementById('global-search').value : '') +
@@ -1079,11 +1033,9 @@
             priceMax: parseInt(document.getElementById('price-range-max') ? document.getElementById('price-range-max').value : 500000)
         };
     }
-
     function applyFiltersAndRender() {
         var f = getFilters();
         var filtered = allProducts.filter(function(p) {
-            // Search
             if (f.search) {
                 var q = f.search.toLowerCase();
                 var match = (p.name && p.name.toLowerCase().indexOf(q) !== -1) ||
@@ -1091,34 +1043,24 @@
                             (p.vendor_store_name && p.vendor_store_name.toLowerCase().indexOf(q) !== -1);
                 if (!match) return false;
             }
-            // Store
             if (f.store !== 'ALL' && p.vendor_id !== parseInt(f.store)) return false;
-            // Stock
             if (f.stock === 'IN' && p.stock <= 0) return false;
-            // Price
             if (p.price < f.priceMin || p.price > f.priceMax) return false;
             return true;
         });
-
-        // Sort
         if (f.sort === 'price-asc') filtered.sort(function(a, b) { return a.price - b.price; });
         else if (f.sort === 'price-desc') filtered.sort(function(a, b) { return b.price - a.price; });
         else if (f.sort === 'name') filtered.sort(function(a, b) { return (a.name || '').localeCompare(b.name || ''); });
 
-        // Update count
         var countEl = document.getElementById('results-count');
         if (countEl) countEl.textContent = filtered.length + ' منتج';
-
-        // Show/hide no results
         var noRes = document.getElementById('no-results');
         if (noRes) {
             if (filtered.length === 0 && allProducts.length > 0) noRes.classList.remove('hidden');
             else noRes.classList.add('hidden');
         }
-
         renderGuestProducts(filtered);
     }
-
     function resetAllFilters() {
         if (document.getElementById('global-search')) document.getElementById('global-search').value = '';
         if (document.getElementById('global-search-mobile')) document.getElementById('global-search-mobile').value = '';
@@ -1136,9 +1078,7 @@
         applyFiltersAndRender();
     }
 
-    // ══════════════════════════════════════════════════════════════
     // GUEST CUSTOMER ENGINE
-    // ══════════════════════════════════════════════════════════════
     function generateUUID() {
         if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -1147,17 +1087,13 @@
             return v.toString(16);
         });
     }
-
-    function generateGuestIdemKey() {
-        var key = localStorage.getItem(LS_IDEM_KEY);
-        if (!key) {
-            key = generateUUID();
-            localStorage.setItem(LS_IDEM_KEY, key);
-        }
+    function generateCheckoutIdemKey() {
+        return generateUUID();
+    }
+    function displayIdemKey(key) {
         var el = document.getElementById('guest-cart-idem-key');
         if (el) el.textContent = key;
     }
-
     function populateGuestStoreFilter() {
         var select = document.getElementById('guest-store-filter');
         if (!select) return;
@@ -1180,7 +1116,6 @@
             select.value = currentVal;
         }
     }
-
     function populateMunicipalities() {
         var stateCode = document.getElementById('guest-state').value;
         var munSelect = document.getElementById('guest-municipality');
@@ -1192,7 +1127,6 @@
         }
         munSelect.innerHTML = html;
     }
-
     function renderStars(rating) {
         var html = '';
         for (var i = 1; i <= 5; i++) {
@@ -1201,17 +1135,14 @@
         }
         return html;
     }
-
     function renderGuestProducts(productsToRender) {
         var grid = document.getElementById('guest-products-grid');
         if (!grid) return;
         var filtered = productsToRender || allProducts;
-
         if (filtered.length === 0) {
             grid.innerHTML = '';
             return;
         }
-
         var html = '';
         for (var i = 0; i < filtered.length; i++) {
             var prod = filtered[i];
@@ -1227,7 +1158,6 @@
             var wishIcon = isWished ? 'fa-solid' : 'fa-regular';
             var rating = prod.rating || 0;
             var discountBadge = prod.id % 3 === 0 ? '<span class="absolute top-3 left-3 bg-red-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full">-20%</span>' : '';
-
             html += '<div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-600 transition flex flex-col justify-between shadow-lg hover:shadow-xl hover:shadow-brand-500/10 relative" data-product-id="' + prod.id + '">' +
                 '<div class="product-card-click cursor-pointer"><div class="h-44 bg-slate-950 relative overflow-hidden">' +
                 '<img src="' + encodeURI(imgSrc) + '" class="w-full h-full object-cover hover:scale-105 transition duration-500" alt="' + escapeHtml(prod.name) + '">' +
@@ -1248,7 +1178,6 @@
                 '<i class="fa-solid fa-eye"></i></button></div></div>';
         }
         grid.innerHTML = html;
-
         grid.querySelectorAll('[data-action="add-cart"]').forEach(function(btn) {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -1277,7 +1206,6 @@
             });
         });
     }
-
     function addGuestCart(prodId) {
         var prod = null;
         for (var i = 0; i < allProducts.length; i++) {
@@ -1301,16 +1229,13 @@
         updateGuestCartUI();
         showToast('أضيفت "' + escapeHtml(prod.name) + '" للسلة', 'success');
     }
-
     function updateGuestCartUI() {
         var count = 0;
         for (var i = 0; i < guestCart.length; i++) count += guestCart[i].quantity;
         var badge = document.getElementById('cart-count-badge');
         if (badge) badge.textContent = count;
-
         var container = document.getElementById('guest-cart-items-list');
         if (!container) return;
-
         var subtotal = 0;
         if (guestCart.length === 0) {
             container.innerHTML = '<div class="text-center text-slate-500 text-xs py-8"><i class="fa-solid fa-cart-shopping text-2xl mb-2 block opacity-30"></i>السلة فارغة. أضف منتجات للشراء الفوري.</div>';
@@ -1339,7 +1264,6 @@
                     '<button data-cart-remove="' + prod.id + '" class="text-slate-500 hover:text-red-400 ml-2"><i class="fa-solid fa-trash-can"></i></button></div></div>';
             }
             container.innerHTML = html;
-
             container.querySelectorAll('[data-cart-minus]').forEach(function(btn) {
                 btn.addEventListener('click', function() { adjustGuestCartQty(parseInt(this.dataset.cartMinus), -1); });
             });
@@ -1350,13 +1274,11 @@
                 btn.addEventListener('click', function() { removeGuestCart(parseInt(this.dataset.cartRemove)); });
             });
         }
-
         var subtotalEl = document.getElementById('guest-cart-subtotal');
         if (subtotalEl) subtotalEl.textContent = formatPrice(subtotal);
         updateCartTotal();
         saveGuestCart();
     }
-
     function updateCartTotal() {
         var subtotal = 0;
         for (var i = 0; i < guestCart.length; i++) {
@@ -1372,7 +1294,6 @@
         var totalEl = document.getElementById('guest-cart-total');
         if (totalEl) totalEl.textContent = formatPrice(subtotal + shippingCost);
     }
-
     function adjustGuestCartQty(prodId, delta) {
         var item = null;
         for (var i = 0; i < guestCart.length; i++) {
@@ -1390,7 +1311,6 @@
         item.quantity = newQty;
         updateGuestCartUI();
     }
-
     function removeGuestCart(prodId) {
         var newCart = [];
         for (var i = 0; i < guestCart.length; i++) {
@@ -1399,25 +1319,20 @@
         guestCart = newCart;
         updateGuestCartUI();
     }
-
     function toggleCartDrawer() {
         updateGuestCartUI();
         document.getElementById('guest-cart-modal').classList.toggle('hidden');
     }
 
-    // ══════════════════════════════════════════════════════════════
     // WISHLIST
-    // ══════════════════════════════════════════════════════════════
     function toggleWishlistDrawer() {
         renderWishlistUI();
         document.getElementById('wishlist-modal').classList.toggle('hidden');
     }
-
     function updateWishlistUI() {
         var badge = document.getElementById('wishlist-count-badge');
         if (badge) badge.textContent = wishlist.length;
     }
-
     function renderWishlistUI() {
         var container = document.getElementById('wishlist-items-list');
         if (!container) return;
@@ -1457,7 +1372,6 @@
             });
         });
     }
-
     function moveWishlistToCart() {
         for (var i = 0; i < wishlist.length; i++) {
             addGuestCart(wishlist[i]);
@@ -1470,9 +1384,7 @@
         showToast('تم نقل المفضلة للسلة', 'success');
     }
 
-    // ══════════════════════════════════════════════════════════════
-    // PRODUCT DETAIL & BUY NOW (Enhanced with Reviews & Cross-sell)
-    // ══════════════════════════════════════════════════════════════
+    // PRODUCT DETAIL & BUY NOW
     function openProductDetail(prodId) {
         var prod = null;
         for (var i = 0; i < allProducts.length; i++) {
@@ -1490,13 +1402,11 @@
         document.getElementById('pd-stock').textContent = prod.stock;
         document.getElementById('pd-qty').textContent = pdQty;
 
-        // Stars
         var starsEl = document.getElementById('pd-stars');
         if (starsEl) starsEl.innerHTML = renderStars(prod.rating) + ' <span class="text-slate-400 text-xs">' + (prod.rating || 0) + '</span>';
         var ratingCountEl = document.getElementById('pd-rating-count');
         if (ratingCountEl) ratingCountEl.textContent = '(' + (prod.ratingCount || 0) + ' تقييم)';
 
-        // Urgency
         var urgencyEl = document.getElementById('pd-urgency');
         if (urgencyEl) {
             if (prod.stock > 0 && prod.stock <= 5) {
@@ -1507,7 +1417,6 @@
             }
         }
 
-        // Wishlist button in detail
         var wishBtn = document.getElementById('btn-pd-wishlist');
         if (wishBtn) {
             var isWished = isInWishlist(prod.id);
@@ -1520,15 +1429,10 @@
             };
         }
 
-        // Reviews
         renderReviews(prod);
-
-        // Cross-sell
         renderCrossSell(prod);
-
         document.getElementById('product-detail-modal').classList.remove('hidden');
     }
-
     function renderReviews(prod) {
         var list = document.getElementById('pd-reviews-list');
         if (!list) return;
@@ -1549,13 +1453,10 @@
         }
         list.innerHTML = html;
     }
-
     function renderCrossSell(prod) {
         var section = document.getElementById('pd-cross-sell');
         var grid = document.getElementById('pd-cross-sell-grid');
         if (!section || !grid) return;
-
-        // Find similar products (same vendor or similar price range)
         var similar = [];
         for (var i = 0; i < allProducts.length; i++) {
             var p = allProducts[i];
@@ -1565,29 +1466,25 @@
             }
             if (similar.length >= 3) break;
         }
-
         if (similar.length === 0) {
             section.classList.add('hidden');
             return;
         }
-
         section.classList.remove('hidden');
         var html = '';
         for (var j = 0; j < similar.length; j++) {
             var sp = similar[j];
-            html += '<div class="bg-slate-950 rounded-xl border border-slate-800 overflow-hidden cursor-pointer hover:border-brand-500 transition" onclick="openProductDetail(' + sp.id + ')">' +
+            html += '<div class="bg-slate-950 rounded-xl border border-slate-800 overflow-hidden cursor-pointer hover:border-brand-500 transition" data-cross-sell-id="' + sp.id + '">' +
                 '<img src="' + encodeURI(sp.image || '') + '" class="w-full h-16 object-cover">' +
                 '<div class="p-2"><div class="text-[10px] font-bold text-white truncate">' + escapeHtml(sp.name) + '</div>' +
                 '<div class="text-[10px] text-brand-500 font-bold">' + formatPrice(sp.price) + '</div></div></div>';
         }
         grid.innerHTML = html;
     }
-
     function closeProductDetailModal() {
         document.getElementById('product-detail-modal').classList.add('hidden');
         pdProduct = null;
     }
-
     function adjustPdQty(delta) {
         if (!pdProduct) return;
         var newQty = pdQty + delta;
@@ -1596,13 +1493,11 @@
         pdQty = newQty;
         document.getElementById('pd-qty').textContent = pdQty;
     }
-
     function addToCartFromDetail() {
         if (!pdProduct) return;
         for (var i = 0; i < pdQty; i++) addGuestCart(pdProduct.id);
         closeProductDetailModal();
     }
-
     function buyNowConfirm() {
         if (!pdProduct) return;
         if (pdProduct.stock < pdQty) { showToast('المخزون غير كافٍ', 'error'); return; }
@@ -1614,9 +1509,7 @@
         showToast('أكمل بيانات التسليم للشراء المباشر', 'info');
     }
 
-    // ══════════════════════════════════════════════════════════════
     // SHIPPING CALCULATOR
-    // ══════════════════════════════════════════════════════════════
     function calculateShipping() {
         var stateCode = document.getElementById('calc-state').value;
         if (!stateCode) { showToast('اختر الولاية أولاً', 'error'); return; }
@@ -1627,13 +1520,10 @@
         showToast('تكلفة التوصيل: ' + formatPrice(cost), 'info');
     }
 
-    // ══════════════════════════════════════════════════════════════
     // CHECKOUT ENGINE
-    // ══════════════════════════════════════════════════════════════
     async function processGuestCheckout() {
         if (checkoutInProgress) return;
         if (guestCart.length === 0) { showToast('السلة فارغة!', 'error'); return; }
-
         var guestName = document.getElementById('guest-name').value.trim();
         var guestPhone = document.getElementById('guest-phone').value.trim();
         var guestState = document.getElementById('guest-state').value;
@@ -1641,13 +1531,11 @@
         var guestAddress = document.getElementById('guest-address').value.trim();
         var paymentMethod = document.querySelector('input[name="payment-method"]:checked');
         paymentMethod = paymentMethod ? paymentMethod.value : 'cod';
-
         if (!guestName || guestName.length < 3) { showToast('الرجاء إدخال اسم المشتري (3 أحرف على الأقل)', 'error'); return; }
         if (!/(^\+?[0-9]{8,15})$/.test(guestPhone)) { showToast('الرجاء إدخال رقم هاتف صالح', 'error'); return; }
         if (!guestState) { showToast('الرجاء اختيار الولاية', 'error'); return; }
         if (!guestMunicipality) { showToast('الرجاء اختيار البلدية', 'error'); return; }
         if (!guestAddress || guestAddress.length < 5) { showToast('الرجاء إدخال العنوان التفصيلي', 'error'); return; }
-
         var items = [];
         for (var i = 0; i < guestCart.length; i++) {
             var item = guestCart[i];
@@ -1664,25 +1552,22 @@
                 vendorId: prod.vendor_id
             });
         }
-
         checkoutInProgress = true;
         var btn = document.getElementById('btn-checkout');
         if (btn) { btn.disabled = true; btn.classList.add('opacity-50', 'cursor-not-allowed'); btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-2"></i> جاري المعالجة...'; }
-
         try {
-            var idemKey = localStorage.getItem(LS_IDEM_KEY) || generateUUID();
+            var idemKey = generateCheckoutIdemKey();
             var result = await apiFetch('/api/orders', {
                 method: 'POST',
                 headers: { 'Idempotency-Key': idemKey },
-                body: JSON.stringify({ guestName, guestPhone, guestState, guestMunicipality, guestAddress, items, paymentMethod, shippingCost })
+                body: JSON.stringify({ guestName, guestPhone, guestState, guestMunicipality, guestAddress, items: items.map(function(i){ return { productId: i.productId, quantity: i.quantity }; }), paymentMethod })
             });
-
             guestCart = [];
             saveGuestCart();
             updateGuestCartUI();
             await loadProducts();
             await loadOrders();
-            generateGuestIdemKey();
+            displayIdemKey(generateCheckoutIdemKey());
             toggleCartDrawer();
             showToast('🎉 شكراً ' + escapeHtml(guestName) + '! تم تأكيد الطلب #' + result.orderId, 'success');
         } catch (err) {
@@ -1693,518 +1578,328 @@
         }
     }
 
-    // ══════════════════════════════════════════════════════════════
     // VENDOR ENGINE
-    // ══════════════════════════════════════════════════════════════
     function closeVendorAuthModal() { document.getElementById('vendor-auth-modal').classList.add('hidden'); }
-
     async function submitVendorAuth(type) {
         var email = document.getElementById('vendor-email').value.trim().toLowerCase();
         var storeName = document.getElementById('vendor-store-input').value.trim() || ('متجر ' + email.split('@')[0]);
         var password = document.getElementById('vendor-password').value;
-
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('يرجى إدخال بريد إلكتروني صالح', 'error'); return; }
         if (password.length < 12) { showToast('كلمة المرور يجب أن تكون 12+ حرف', 'error'); return; }
         if (!/[A-Z]/.test(password)) { showToast('يجب أن تحتوي على حرف كبير', 'error'); return; }
         if (!/[0-9]/.test(password)) { showToast('يجب أن تحتوي على رقم', 'error'); return; }
         if (!/[^A-Za-z0-9]/.test(password)) { showToast('يجب أن تحتوي على رمز خاص', 'error'); return; }
 
+        var endpoint = type === 'login' ? '/api/auth/login' : '/api/auth/register';
         try {
-            var url = type === 'register' ? '/api/auth/register' : '/api/auth/login';
-            var body = type === 'register' ? { email, password, storeName } : { email, password };
-            var data = await apiFetch(url, { method: 'POST', body: JSON.stringify(body) });
+            var data = await apiFetch(endpoint, {
+                method: 'POST',
+                body: JSON.stringify({ email, password, storeName })
+            });
             setToken(data.token);
             currentUser = data.user;
-            if (data.user.role === 'ADMIN') activeAdmin = data.user;
-            else activeVendor = data.user;
-
+            activeVendor = data.user;
             closeVendorAuthModal();
             renderNavButtons();
-            document.getElementById('portal-vendor-view').classList.remove('hidden');
-            var btn = document.getElementById('nav-vendor');
-            if (btn) btn.classList.add('bg-cyan-600', 'text-white', 'shadow-md');
-            await loadProducts();
-            await loadOrders();
-            renderVendorPanel();
-            showToast('مرحباً بك: ' + escapeHtml(data.user.store_name || data.user.email), 'success');
+            switchPortal('vendor');
+            showToast('تم تسجيل الدخول بنجاح', 'success');
         } catch (err) {
             showToast(err.message, 'error');
         }
-    }
-
-    function logoutVendor() {
-        activeVendor = null;
-        activeAdmin = null;
-        currentUser = null;
-        clearToken();
-        renderNavButtons();
-        document.getElementById('portal-vendor-view').classList.add('hidden');
-        switchPortal('customer');
-        showToast('تم خروج التاجر', 'info');
     }
 
     function renderVendorPanel() {
         if (!currentUser) return;
-        document.getElementById('vendor-account-name').textContent = currentUser.email;
-        document.getElementById('vendor-store-heading').textContent = 'إدارة ' + (currentUser.store_name || currentUser.email);
+        document.getElementById('vendor-account-name').textContent = currentUser.storeName || currentUser.email;
+        document.getElementById('vendor-portal-title').textContent = 'بوابة: ' + (currentUser.storeName || 'المتجر');
+        document.getElementById('vendor-store-heading').textContent = 'إدارة ' + (currentUser.storeName || 'المتجر الخاص');
 
-        var vProds = [];
-        for (var i = 0; i < allProducts.length; i++) {
-            if (allProducts[i].vendor_id === currentUser.id) vProds.push(allProducts[i]);
-        }
+        loadProducts().then(function() {
+            var myProducts = allProducts.filter(function(p) { return p.vendor_id === currentUser.id; });
+            document.getElementById('vendor-products-count-stat').textContent = myProducts.length;
 
-        var rev = 0;
-        var itemsSold = 0;
-        for (var k = 0; k < allOrders.length; k++) {
-            var o = allOrders[k];
-            if (o.items) {
-                for (var m = 0; m < o.items.length; m++) {
-                    var it = o.items[m];
-                    if (it.vendorId === currentUser.id) {
-                        rev += (it.price || 0) * (it.quantity || 0);
-                        itemsSold += (it.quantity || 0);
-                    }
+            var tbody = document.getElementById('vendor-products-table-body');
+            if (tbody) {
+                var html = '';
+                for (var i = 0; i < myProducts.length; i++) {
+                    var p = myProducts[i];
+                    var stClass = p.stock > 0 ? 'text-emerald-400 bg-emerald-500/10' : 'text-red-400 bg-red-500/10';
+                    html += '<tr><td class="p-3 font-mono">#' + p.id + '</td>' +
+                        '<td class="p-3"><img src="' + encodeURI(p.image || '') + '" class="w-8 h-8 rounded object-cover"></td>' +
+                        '<td class="p-3 font-bold">' + escapeHtml(p.name) + '</td>' +
+                        '<td class="p-3 font-mono text-brand-400">' + formatPrice(p.price) + '</td>' +
+                        '<td class="p-3 font-mono">' + p.stock + '</td>' +
+                        '<td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ' + stClass + '">' + (p.stock > 0 ? 'نشط' : 'نفذ') + '</span></td>' +
+                        '<td class="p-3"><button data-delete-prod="' + p.id + '" class="text-red-400 hover:text-red-300"><i class="fa-solid fa-trash"></i></button></td></tr>';
                 }
+                tbody.innerHTML = html || '<tr><td colspan="7" class="p-4 text-center text-slate-500">لا توجد منتجات مسجلة بمتجرك</td></tr>';
+                tbody.querySelectorAll('[data-delete-prod]').forEach(function(b) {
+                    b.addEventListener('click', function() { deleteVendorProduct(parseInt(this.dataset.deleteProd)); });
+                });
             }
-        }
+        });
 
-        document.getElementById('vendor-revenue-stat').textContent = formatPrice(rev);
-        document.getElementById('vendor-products-count-stat').textContent = vProds.length;
-        document.getElementById('vendor-items-sold-stat').textContent = itemsSold;
-
-        var tbody = document.getElementById('vendor-products-table-body');
-        if (vProds.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="7" class="p-4 text-center text-slate-500">لم تقم بنشر أي منتجات بعد.</td></tr>';
-        } else {
-            var html = '';
-            for (var j = 0; j < vProds.length; j++) {
-                var p = vProds[j];
-                html += '<tr class="hover:bg-slate-800/40 transition"><td class="p-3 font-mono text-cyan-400">#' + p.id + '</td>' +
-                    '<td class="p-3"><img src="' + encodeURI(p.image || '') + '" class="w-10 h-10 rounded-lg object-cover" alt=""></td>' +
-                    '<td class="p-3 font-semibold text-white">' + escapeHtml(p.name) + '</td>' +
-                    '<td class="p-3 font-bold text-brand-500">' + formatPrice(p.price) + '</td>' +
-                    '<td class="p-3">' + p.stock + '</td>' +
-                    '<td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ' + (p.stock > 0 ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400') + '">' + (p.stock > 0 ? 'نشط' : 'نفذ') + '</span></td>' +
-                    '<td class="p-3"><button data-delete-product="' + p.id + '" class="text-red-400 hover:text-red-300 transition"><i class="fa-solid fa-trash-can"></i></button></td></tr>';
-            }
-            tbody.innerHTML = html;
-            tbody.querySelectorAll('[data-delete-product]').forEach(function(btn) {
-                btn.addEventListener('click', function() { deleteVendorProduct(parseInt(this.dataset.deleteProduct)); });
+        loadOrders().then(function() {
+            var myOrders = allOrders.filter(function(o) { return o.vendor_id === currentUser.id || currentUser.role === 'ADMIN'; });
+            var revenue = 0;
+            var sold = 0;
+            myOrders.forEach(function(o) {
+                revenue += o.total_amount || 0;
+                sold += o.quantity || 1;
             });
-        }
+            document.getElementById('vendor-revenue-stat').textContent = formatPrice(revenue);
+            document.getElementById('vendor-items-sold-stat').textContent = sold;
 
-        var oTbody = document.getElementById('vendor-orders-table-body');
-        var myOrders = [];
-        var seenOrderIds = new Set();
-        for (var k2 = 0; k2 < allOrders.length; k2++) {
-            var o2 = allOrders[k2];
-            if (o2.items) {
-                for (var m2 = 0; m2 < o2.items.length; m2++) {
-                    if (o2.items[m2].vendorId === currentUser.id && !seenOrderIds.has(o2.id)) {
-                        seenOrderIds.add(o2.id);
-                        myOrders.push(o2);
-                        break;
-                    }
+            var tbody = document.getElementById('vendor-orders-table-body');
+            if (tbody) {
+                var html = '';
+                for (var i = 0; i < myOrders.length; i++) {
+                    var o = myOrders[i];
+                    html += '<tr><td class="p-3 font-mono">#' + o.id + '</td>' +
+                        '<td class="p-3 font-bold">' + escapeHtml(o.customer_name) + '<br><span class="text-[10px] text-slate-500">' + escapeHtml(o.customer_phone) + '</span></td>' +
+                        '<td class="p-3">' + escapeHtml(o.customer_state) + ' - ' + escapeHtml(o.customer_municipality) + '</td>' +
+                        '<td class="p-3 font-mono text-emerald-400">' + formatPrice(o.total_amount) + '</td>' +
+                        '<td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-400">' + escapeHtml(o.status || 'معلق') + '</span></td>' +
+                        '<td class="p-3"><button data-print-order="' + o.id + '" class="text-cyan-400 hover:text-cyan-300"><i class="fa-solid fa-print"></i></button></td></tr>';
                 }
+                tbody.innerHTML = html || '<tr><td colspan="6" class="p-4 text-center text-slate-500">لا توجد طلبات سابقة</td></tr>';
+                tbody.querySelectorAll('[data-print-order]').forEach(function(b) {
+                    b.addEventListener('click', function() { openPrintModal(parseInt(this.dataset.printOrder)); });
+                });
             }
-        }
-        if (myOrders.length === 0) {
-            oTbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-slate-500">لا توجد طلبات بعد.</td></tr>';
-        } else {
-            var oh = '';
-            for (var n = 0; n < myOrders.length; n++) {
-                var ord = myOrders[n];
-                oh += '<tr class="hover:bg-slate-800/40 transition"><td class="p-3 font-mono text-cyan-400">#' + ord.id + '</td>' +
-                    '<td class="p-3 text-white">' + escapeHtml(ord.guest_name || '') + '<br><span class="text-[10px] text-slate-500">' + escapeHtml(ord.guest_phone || '') + '</span></td>' +
-                    '<td class="p-3 text-slate-400 text-[10px]">' + escapeHtml(ord.guest_municipality || '') + ', ' + escapeHtml(ord.guest_state || '') + '</td>' +
-                    '<td class="p-3 font-bold text-brand-500">' + formatPrice(ord.total_amount) + '</td>' +
-                    '<td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-400">' + escapeHtml(ord.status || 'PENDING') + '</span></td>' +
-                    '<td class="p-3"><button data-print-order="' + ord.id + '" class="text-cyan-400 hover:text-cyan-300"><i class="fa-solid fa-print"></i></button></td></tr>';
-            }
-            oTbody.innerHTML = oh;
-            oTbody.querySelectorAll('[data-print-order]').forEach(function(btn) {
-                btn.addEventListener('click', function() { openPrintModal(parseInt(this.dataset.printOrder)); });
-            });
-        }
-    }
-
-    function openAddVendorProductModal() { document.getElementById('vendor-add-prod-modal').classList.remove('hidden'); }
-
-    function closeVendorAddProductModal() {
-        document.getElementById('vendor-add-prod-modal').classList.add('hidden');
-        document.getElementById('v-new-name').value = '';
-        document.getElementById('v-new-desc').value = '';
-        document.getElementById('v-new-price').value = '';
-        document.getElementById('v-new-stock').value = '';
-        document.getElementById('v-new-image').value = '';
-        productImageBase64 = null;
-        var preview = document.getElementById('v-new-image-preview');
-        if (preview) preview.innerHTML = '<i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-500 mb-2"></i><span class="text-xs text-slate-400">اضغط لرفع صورة المنتج</span><span class="text-[10px] text-slate-600">JPG, PNG, WEBP — يتم الضغط تلقائياً</span>';
-        var status = document.getElementById('image-compression-status');
-        if (status) status.classList.add('hidden');
-    }
-
-    async function handleProductImageUpload(input) {
-        var file = input.files[0];
-        if (!file) return;
-        if (file.size > 10 * 1024 * 1024) { showToast('حجم الصورة يتجاوز 10 ميجا', 'error'); return; }
-        try {
-            showToast('جاري ضغط الصورة...', 'info');
-            var compressed = await compressImage(file, 800, 800, 0.8);
-            productImageBase64 = compressed;
-            var preview = document.getElementById('v-new-image-preview');
-            if (preview) preview.innerHTML = '<img src="' + compressed + '" class="h-24 rounded-lg object-cover">';
-            var status = document.getElementById('image-compression-status');
-            if (status) status.classList.remove('hidden');
-            showToast('تم ضغط الصورة بنجاح', 'success');
-        } catch (err) {
-            showToast('فشل ضغط الصورة: ' + err.message, 'error');
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                productImageBase64 = e.target.result;
-                var preview = document.getElementById('v-new-image-preview');
-                if (preview) preview.innerHTML = '<img src="' + e.target.result + '" class="h-24 rounded-lg object-cover">';
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
-    async function saveVendorNewProduct() {
-        if (!currentUser) { showToast('يجب تسجيل الدخول', 'error'); return; }
-        var name = document.getElementById('v-new-name').value.trim();
-        var desc = document.getElementById('v-new-desc').value.trim();
-        var price = parseFloat(document.getElementById('v-new-price').value);
-        var stock = parseInt(document.getElementById('v-new-stock').value);
-        if (!name) { showToast('يرجى إدخال اسم المنتج', 'error'); return; }
-        if (isNaN(price) || price < 0) { showToast('يرجى إدخال سعر صحيح', 'error'); return; }
-        if (isNaN(stock) || stock < 0) { showToast('يرجى إدخال كمية صحيحة', 'error'); return; }
-
-        try {
-            await apiFetch('/api/products', {
-                method: 'POST',
-                body: JSON.stringify({
-                    name, description: desc, price, stock,
-                    image: productImageBase64 || 'https://via.placeholder.com/500'
-                })
-            });
-            closeVendorAddProductModal();
-            await loadProducts();
-            renderVendorPanel();
-            showToast('تم نشر المنتج بنجاح', 'success');
-        } catch (err) {
-            showToast(err.message, 'error');
-        }
+        });
     }
 
     async function deleteVendorProduct(id) {
-        if (!currentUser) { showToast('يجب تسجيل الدخول', 'error'); return; }
-        if (!confirm('هل أنت متأكد من حذف هذا المنتج؟')) return;
+        if (!confirm('هل أنت تأكد من حذف هذا المنتج؟')) return;
         try {
             await apiFetch('/api/products/' + id, { method: 'DELETE' });
-            await loadProducts();
+            showToast('تم حذف المنتج', 'success');
             renderVendorPanel();
-            showToast('تم حذف المنتج', 'info');
         } catch (err) {
             showToast(err.message, 'error');
         }
     }
 
-    // ══════════════════════════════════════════════════════════════
-    // VENDOR PROFILE
-    // ══════════════════════════════════════════════════════════════
-    function openVendorProfileModal() {
-        if (!currentUser) return;
-        document.getElementById('profile-email').value = currentUser.email;
-        document.getElementById('profile-store').value = currentUser.store_name || '';
-        document.getElementById('profile-old-pass').value = '';
-        document.getElementById('profile-new-pass').value = '';
-        document.getElementById('vendor-profile-modal').classList.remove('hidden');
-    }
-
-    function closeVendorProfileModal() { document.getElementById('vendor-profile-modal').classList.add('hidden'); }
-
-    async function saveVendorProfile() {
-        var storeName = document.getElementById('profile-store').value.trim();
-        var oldPass = document.getElementById('profile-old-pass').value;
-        var newPass = document.getElementById('profile-new-pass').value;
-
+    // ADMIN ENGINE
+    async function submitAdminAuth() {
+        var email = document.getElementById('admin-email').value.trim().toLowerCase();
+        var password = document.getElementById('admin-password').value;
         try {
-            var body = { storeName: storeName };
-            if (oldPass && newPass) {
-                if (newPass.length < 12) { showToast('كلمة المرور الجديدة قصيرة', 'error'); return; }
-                body.oldPassword = oldPass;
-                body.newPassword = newPass;
-            }
-            var data = await apiFetch('/api/auth/profile', { method: 'PUT', body: JSON.stringify(body) });
-            currentUser = data.user;
-            activeVendor = data.user;
-            renderVendorPanel();
-            closeVendorProfileModal();
-            showToast('تم حفظ التغييرات', 'success');
-        } catch (err) {
-            showToast(err.message, 'error');
-        }
-    }
-
-    // ══════════════════════════════════════════════════════════════
-    // STAFF MANAGEMENT
-    // ══════════════════════════════════════════════════════════════
-    function openStaffModal() {
-        renderStaffTable();
-        document.getElementById('staff-modal').classList.remove('hidden');
-    }
-
-    function closeStaffModal() { document.getElementById('staff-modal').classList.add('hidden'); }
-
-    function renderStaffTable() {
-        var tbody = document.getElementById('staff-table-body');
-        if (staffList.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" class="p-3 text-center text-slate-500">لا يوجد مساعدون مسجلون.</td></tr>';
-            return;
-        }
-        var html = '';
-        for (var i = 0; i < staffList.length; i++) {
-            var s = staffList[i];
-            html += '<tr class="hover:bg-slate-800/40 transition"><td class="p-2 text-white">' + escapeHtml(s.name) + '</td>' +
-                '<td class="p-2 text-slate-400">' + escapeHtml(s.email) + '</td>' +
-                '<td class="p-2"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-500/20 text-cyan-400">' + escapeHtml(s.role) + '</span></td>' +
-                '<td class="p-2"><button data-remove-staff="' + i + '" class="text-red-400 hover:text-red-300"><i class="fa-solid fa-trash-can"></i></button></td></tr>';
-        }
-        tbody.innerHTML = html;
-        tbody.querySelectorAll('[data-remove-staff]').forEach(function(btn) {
-            btn.addEventListener('click', function() { removeStaffMember(parseInt(this.dataset.removeStaff)); });
-        });
-    }
-
-    async function addStaffMember() {
-        var email = document.getElementById('staff-email').value.trim();
-        var name = document.getElementById('staff-name').value.trim();
-        var role = document.getElementById('staff-role').value;
-        if (!email || !name) { showToast('يرجى ملء جميع الحقول', 'error'); return; }
-
-        try {
-            await apiFetch('/api/staff', {
+            var data = await apiFetch('/api/auth/login', {
                 method: 'POST',
-                body: JSON.stringify({ email, name, role })
+                body: JSON.stringify({ email, password })
             });
-            staffList.push({ email, name, role });
-            renderStaffTable();
-            document.getElementById('staff-email').value = '';
-            document.getElementById('staff-name').value = '';
-            showToast('تم إضافة المساعد', 'success');
+            setToken(data.token);
+            currentUser = data.user;
+            activeAdmin = data.user;
+            document.getElementById('admin-auth-modal').classList.add('hidden');
+            renderNavButtons();
+            switchPortal('admin');
+            showToast('مرحباً بك في لوحة الإدارة', 'success');
         } catch (err) {
             showToast(err.message, 'error');
         }
     }
 
-    async function removeStaffMember(idx) {
-        if (!confirm('حذف هذا المساعد؟')) return;
-        var staff = staffList[idx];
+    async function renderAdminPanel() {
         try {
-            if (staff && staff.id) {
-                await apiFetch('/api/staff/' + staff.id, { method: 'DELETE' });
+            var stats = await apiFetch('/api/admin/stats');
+            document.getElementById('admin-total-sales').textContent = formatPrice(stats.totalSales);
+            document.getElementById('admin-total-vendors').textContent = stats.totalVendors;
+            document.getElementById('admin-total-orders').textContent = stats.totalOrders;
+            document.getElementById('admin-total-audit').textContent = stats.totalAuditLogs;
+
+            var vendorsData = await apiFetch('/api/admin/vendors');
+            var tbodyV = document.getElementById('admin-vendors-table-body');
+            if (tbodyV) {
+                var htmlV = '';
+                for (var i = 0; i < vendorsData.vendors.length; i++) {
+                    var v = vendorsData.vendors[i];
+                    htmlV += '<tr><td class="p-3 font-mono">#' + v.id + '</td>' +
+                        '<td class="p-3">' + escapeHtml(v.email) + '</td>' +
+                        '<td class="p-3 font-bold">' + escapeHtml(v.store_name) + '</td>' +
+                        '<td class="p-3"><span class="text-emerald-400">نشط</span></td>' +
+                        '<td class="p-3"><button data-toggle-vendor="' + v.id + '" class="text-red-400 text-xs">تجميد</button></td></tr>';
+                }
+                tbodyV.innerHTML = htmlV;
             }
-            staffList.splice(idx, 1);
-            renderStaffTable();
+
+            var auditData = await apiFetch('/api/admin/audit');
+            var tbodyA = document.getElementById('admin-audit-table-body');
+            if (tbodyA) {
+                var htmlA = '';
+                for (var j = 0; j < auditData.logs.length; j++) {
+                    var a = auditData.logs[j];
+                    htmlA += '<tr><td class="p-3 font-mono">#' + a.id + '</td>' +
+                        '<td class="p-3 font-bold text-cyan-400">' + escapeHtml(a.action) + '</td>' +
+                        '<td class="p-3">' + escapeHtml(a.entity) + '</td>' +
+                        '<td class="p-3">' + escapeHtml(a.user_email || 'نظام') + '</td>' +
+                        '<td class="p-3 font-mono text-[10px] text-slate-400 truncate max-w-xs">' + escapeHtml(a.payload) + '</td>' +
+                        '<td class="p-3 text-slate-500">' + a.created_at + '</td></tr>';
+                }
+                tbodyA.innerHTML = htmlA;
+            }
         } catch (err) {
-            showToast(err.message, 'error');
+            showToast('خطأ أثناء تحميل بيانات الإدارة', 'error');
         }
     }
 
-    // ══════════════════════════════════════════════════════════════
-    // INIT
-    // ══════════════════════════════════════════════════════════════
-    window.addEventListener('DOMContentLoaded', async function() {
+    // PRINT ORDER MODAL
+    function openPrintModal(orderId) {
+        var order = allOrders.find(function(o) { return o.id === orderId; });
+        if (!order) return;
+        var printArea = document.getElementById('print-area');
+        printArea.innerHTML = '<div class="text-center border-b pb-2 mb-2"><h2 class="text-lg font-bold">⚡ فلاش ماركت — وصل التوصيل</h2></div>' +
+            '<p><strong>رقم الطلب:</strong> #' + order.id + '</p>' +
+            '<p><strong>الزبون:</strong> ' + escapeHtml(order.customer_name) + '</p>' +
+            '<p><strong>الهاتف:</strong> ' + escapeHtml(order.customer_phone) + '</p>' +
+            '<p><strong>العنوان:</strong> ' + escapeHtml(order.customer_state) + ' - ' + escapeHtml(order.customer_municipality) + ' (' + escapeHtml(order.customer_address) + ')</p>' +
+            '<p><strong>المبلغ المباشر:</strong> ' + formatPrice(order.total_amount) + '</p>' +
+            '<p><strong>طريقة الدفع:</strong> ' + (order.payment_method === 'cod' ? 'الدفع عند الاستلام' : 'بطاقة بنكية') + '</p>';
+        document.getElementById('print-modal').classList.remove('hidden');
+    }
+
+    // INITIALIZATION & EVENT BINDING
+    function init() {
         loadGuestCart();
         loadWishlist();
-        generateGuestIdemKey();
-        renderNavButtons();
-        attachEventListeners();
+        displayIdemKey(generateCheckoutIdemKey());
         startCountdown();
-        await loadProducts();
-        await loadOrders();
-        await loadStaff();
+
+        loadProducts();
+        renderNavButtons();
+
+        // Bind Customer View Buttons
+        bindIfExists('btn-cart-drawer', 'click', toggleCartDrawer);
+        bindIfExists('btn-close-cart', 'click', toggleCartDrawer);
+        bindIfExists('btn-wishlist-toggle', 'click', toggleWishlistDrawer);
+        bindIfExists('btn-close-wishlist', 'click', toggleWishlistDrawer);
+        bindIfExists('btn-calc-shipping', 'click', calculateShipping);
+        bindIfExists('btn-checkout', 'click', processGuestCheckout);
+
+        // Bind Global Searches
+        bindIfExists('global-search', 'input', debounce(applyFiltersAndRender, 300));
+        bindIfExists('global-search-mobile', 'input', debounce(applyFiltersAndRender, 300));
+
+        // Bind Select Filters
+        bindIfExists('guest-store-filter', 'change', applyFiltersAndRender);
+        bindIfExists('guest-stock-filter', 'change', applyFiltersAndRender);
+        bindIfExists('guest-sort-filter', 'change', applyFiltersAndRender);
+
+        // Bind Price Sliders
+        var minR = document.getElementById('price-range-min');
+        var maxR = document.getElementById('price-range-max');
+        if (minR) {
+            minR.addEventListener('input', function() {
+                document.getElementById('price-label-min').textContent = formatPrice(this.value);
+                applyFiltersAndRender();
+            });
+        }
+        if (maxR) {
+            maxR.addEventListener('input', function() {
+                document.getElementById('price-label-max').textContent = formatPrice(this.value);
+                applyFiltersAndRender();
+            });
+        }
+
+        // Bind State Dynamic Municipality
+        bindIfExists('guest-state', 'change', populateMunicipalities);
+
+        // Product Detail Modal Actions
+        bindIfExists('btn-close-detail', 'click', closeProductDetailModal);
+        bindIfExists('btn-pd-minus', 'click', function() { adjustPdQty(-1); });
+        bindIfExists('btn-pd-plus', 'click', function() { adjustPdQty(1); });
+        bindIfExists('btn-add-to-cart', 'click', addToCartFromDetail);
+        bindIfExists('btn-buy-now', 'click', buyNowConfirm);
+
+        // Auth Modals
+        bindIfExists('btn-close-vendor-auth', 'click', closeVendorAuthModal);
+        bindIfExists('btn-vendor-login', 'click', function() { submitVendorAuth('login'); });
+        bindIfExists('btn-vendor-register', 'click', function() { submitVendorAuth('register'); });
+        bindIfExists('btn-close-admin-auth', 'click', function() { document.getElementById('admin-auth-modal').classList.add('hidden'); });
+        bindIfExists('btn-admin-login', 'click', submitAdminAuth);
+
+        // Vendor Panel Buttons
+        bindIfExists('btn-logout-vendor', 'click', function() { clearToken(); currentUser = null; renderNavButtons(); switchPortal('customer'); });
+        bindIfExists('btn-logout-admin', 'click', function() { clearToken(); activeAdmin = null; currentUser = null; renderNavButtons(); switchPortal('customer'); });
+        bindIfExists('btn-add-product', 'click', function() { document.getElementById('vendor-add-prod-modal').classList.remove('hidden'); });
+        bindIfExists('btn-close-add-product', 'click', function() { document.getElementById('vendor-add-prod-modal').classList.add('hidden'); });
+
+        // Add Product Form
+        var imgInput = document.getElementById('v-new-image');
+        if (imgInput) {
+            imgInput.addEventListener('change', async function(e) {
+                var file = e.target.files[0];
+                if (!file) return;
+                if (!file.type || file.type.indexOf('image/') !== 0) {
+                    showToast('الملف المرفوع ليس صورة صالحة', 'error'); return;
+                }
+                var validExts = ['.jpg', '.jpeg', '.png', '.webp'];
+                var ext = file.name.toLowerCase().slice(file.name.lastIndexOf('.'));
+                if (validExts.indexOf(ext) === -1) {
+                    showToast('امتداد الملف غير مدعوم. استخدم JPG أو PNG أو WEBP', 'error'); return;
+                }
+                try {
+                    productImageBase64 = await compressImage(file, 800, 800, 0.8);
+                    document.getElementById('image-compression-status').classList.remove('hidden');
+                } catch (err) {
+                    showToast('فشل ضغط الصورة', 'error');
+                }
+            });
+        }
+
+        bindIfExists('btn-save-product', 'click', async function() {
+            var name = document.getElementById('v-new-name').value.trim();
+            var desc = document.getElementById('v-new-desc').value.trim();
+            var price = parseFloat(document.getElementById('v-new-price').value);
+            var stock = parseInt(document.getElementById('v-new-stock').value);
+            if (!name || isNaN(price) || isNaN(stock)) { showToast('يرجى ملء كافة الحقول الممتلئة بعلامة *', 'error'); return; }
+
+            try {
+                await apiFetch('/api/products', {
+                    method: 'POST',
+                    body: JSON.stringify({ name, description: desc, price, stock, image: productImageBase64 })
+                });
+                showToast('تم نشر المنتج بنجاح', 'success');
+                document.getElementById('vendor-add-prod-modal').classList.add('hidden');
+                renderVendorPanel();
+            } catch (err) {
+                showToast(err.message, 'error');
+            }
+        });
+
+        // Print Order Actions
+        bindIfExists('btn-close-print', 'click', function() { document.getElementById('print-modal').classList.add('hidden'); });
+        bindIfExists('btn-close-print-alt', 'click', function() { document.getElementById('print-modal').classList.add('hidden'); });
+        bindIfExists('btn-print-order', 'click', function() { window.print(); });
+
+        bindIfExists('btn-close-urgency', 'click', function() { document.getElementById('urgency-banner').remove(); });
+        bindIfExists('btn-reset-filters', 'click', resetAllFilters);
+        bindIfExists('btn-move-wishlist', 'click', moveWishlistToCart);
+
+        // Event delegation for cross-sell products (replaces inline onclick)
+        var crossSellGrid = document.getElementById('pd-cross-sell-grid');
+        if (crossSellGrid) {
+            crossSellGrid.addEventListener('click', function(e) {
+                var card = e.target.closest('[data-cross-sell-id]');
+                if (card) {
+                    openProductDetail(parseInt(card.dataset.crossSellId));
+                }
+            });
+        }
+
         updateGuestCartUI();
         updateWishlistUI();
+    }
 
-        try {
-            var data = await apiFetch('/api/auth/me');
-            if (data.user) {
-                currentUser = data.user;
-                if (data.user.role === 'ADMIN') activeAdmin = data.user;
-                else if (data.user.role === 'SELLER') activeVendor = data.user;
-                renderNavButtons();
-            }
-        } catch (err) { clearToken(); }
-
-        console.log('%c⚡ Flash Market v3.0', 'color: #f97316; font-size: 16px; font-weight: bold;');
-        console.log('%cAdvanced Edition — Search, Filters, Wishlist, Reviews, Cross-sell', 'color: #06b6d4; font-size: 11px;');
-    });
-
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 })();
-</script>
-</body>
-</html>
-function renderStars(rating) {
-        var html = '';
-        var r = Math.round(Number(rating) || 0);
-        for (var i = 1; i <= 5; i++) {
-            if (i <= r) {
-                html += '<i class="fa-solid fa-star"></i>';
-            } else {
-                html += '<i class="fa-regular fa-star text-slate-600"></i>';
-            }
-        }
-        return html;
-    }
 
-    // ══════════════════════════════════════════════════════════════
-    // GUEST PRODUCTS & CARDS RENDER
-    // ══════════════════════════════════════════════════════════════
-    function renderGuestProducts(products) {
-        var grid = document.getElementById('guest-products-grid');
-        if (!grid) return;
-        if (!products || products.length === 0) {
-            grid.innerHTML = '';
-            return;
-        }
-
-        var html = '';
-        for (var i = 0; i < products.length; i++) {
-            var p = products[i];
-            var isWish = isInWishlist(p.id);
-            var wishClass = isWish ? 'wishlist-active' : 'text-slate-400 hover:text-pink-500';
-            var wishIcon = isWish ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
-            var inStock = p.stock > 0;
-
-            html += `
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-700 transition flex flex-col justify-between group">
-                <div class="relative h-48 bg-slate-950 overflow-hidden cursor-pointer" onclick="openProductDetail(${p.id})">
-                    <img src="${escapeHtml(p.image_url || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500')}" 
-                         alt="${escapeHtml(p.name)}" 
-                         class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                    <button onclick="event.stopPropagation(); toggleWishlistHandler(${p.id})" 
-                            class="absolute top-3 right-3 bg-slate-950/70 backdrop-blur ${wishClass} w-9 h-9 rounded-full flex items-center justify-center transition border border-slate-800">
-                        <i class="${wishIcon}"></i>
-                    </button>
-                    ${!inStock ? '<span class="absolute top-3 left-3 bg-red-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">نفذت الكمية</span>' : ''}
-                    ${p.stock > 0 && p.stock <= 3 ? '<span class="absolute top-3 left-3 bg-amber-500/90 text-slate-950 text-[10px] font-extrabold px-2 py-0.5 rounded-md">قطع محددة</span>' : ''}
-                </div>
-
-                <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-1">
-                            <span class="text-[10px] text-cyan-400 font-bold"><i class="fa-solid fa-store ml-1"></i>${escapeHtml(p.vendor_store_name || 'متجر')}</span>
-                            <div class="flex items-center gap-1 text-[11px] text-amber-400">
-                                ${renderStars(p.rating)}
-                                <span class="text-slate-500 text-[9px]">(${p.ratingCount || 0})</span>
-                            </div>
-                        </div>
-                        <h4 class="text-sm font-bold text-white line-clamp-1 cursor-pointer hover:text-brand-400 transition" onclick="openProductDetail(${p.id})">${escapeHtml(p.name)}</h4>
-                        <p class="text-[11px] text-slate-400 line-clamp-2 mt-1 leading-relaxed">${escapeHtml(p.description || 'لا يوجد وصف متاح')}</p>
-                    </div>
-
-                    <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
-                        <div>
-                            <span class="text-xs text-slate-500 block text-[9px]">السعر:</span>
-                            <span class="text-base font-extrabold text-brand-500">${formatPrice(p.price)}</span>
-                        </div>
-                        <button onclick="addToCartQuick(${p.id})" ${!inStock ? 'disabled' : ''} 
-                                class="bg-brand-500 hover:bg-brand-600 disabled:bg-slate-800 disabled:text-slate-600 text-white text-xs font-bold px-3 py-2 rounded-xl transition flex items-center shadow-lg shadow-brand-500/20">
-                            <i class="fa-solid fa-cart-plus ml-1"></i> أضف
-                        </button>
-                    </div>
-                </div>
-            </div>`;
-        }
-        grid.innerHTML = html;
-    }
-
-    // ══════════════════════════════════════════════════════════════
-    // EVENT LISTENERS & INITIALIZATION
-    // ══════════════════════════════════════════════════════════════
-    window.toggleWishlistHandler = function(prodId) {
-        toggleWishlist(prodId);
-        updateWishlistBadge();
-        applyFiltersAndRender();
-    };
-
-    function updateWishlistBadge() {
-        var badge = document.getElementById('wishlist-count-badge');
-        if (badge) badge.textContent = wishlist.length;
-    }
-
-    function updateCartBadge() {
-        var badge = document.getElementById('cart-count-badge');
-        var count = guestCart.reduce(function(sum, item) { return sum + item.qty; }, 0);
-        if (badge) badge.textContent = count;
-    }
-
-    window.addToCartQuick = function(prodId) {
-        var product = allProducts.find(function(p) { return p.id === prodId; });
-        if (!product || product.stock <= 0) return;
-
-        var existing = guestCart.find(function(item) { return item.id === prodId; });
-        if (existing) {
-            if (existing.qty < product.stock) {
-                existing.qty++;
-            } else {
-                showToast('تجاوزت الكمية المتاحة في المخزون', 'warning');
-                return;
-            }
-        } else {
-            guestCart.push({ id: product.id, name: product.name, price: product.price, qty: 1, stock: product.stock, image_url: product.image_url });
-        }
-        saveGuestCart();
-        updateCartBadge();
-        showToast('تمت إضافة المنتج للسلة 🛒', 'success');
-    };
-
-    function showToast(msg, type) {
-        var container = document.getElementById('toast-container');
-        if (!container) return;
-        var toast = document.createElement('div');
-        var bg = type === 'error' ? 'bg-red-600' : type === 'warning' ? 'bg-amber-600' : type === 'info' ? 'bg-cyan-600' : 'bg-emerald-600';
-        toast.className = bg + ' text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl transition transform duration-300 pointer-events-auto flex items-center gap-2';
-        toast.innerHTML = '<i class="fa-solid fa-circle-info"></i> <span>' + escapeHtml(msg) + '</span>';
-        container.appendChild(toast);
-        setTimeout(function() {
-            toast.classList.add('opacity-0', 'translate-y-2');
-            setTimeout(function() { toast.remove(); }, 300);
-        }, 3000);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        loadGuestCart();
-        loadWishlist();
-        updateCartBadge();
-        updateWishlistBadge();
-        generateGuestIdemKey();
-        startCountdown();
-        renderNavButtons();
-        loadProducts();
-
-        // Filter Inputs
-        ['global-search', 'global-search-mobile', 'guest-store-filter', 'guest-stock-filter', 'guest-sort-filter'].forEach(function(id) {
-            bindIfExists(id, 'input', applyFiltersAndRender);
-            bindIfExists(id, 'change', applyFiltersAndRender);
-        });
-
-        // Price range binding
-        bindIfExists('price-range-min', 'input', function(e) {
-            document.getElementById('price-label-min').textContent = formatPrice(e.target.value);
-            applyFiltersAndRender();
-        });
-        bindIfExists('price-range-max', 'input', function(e) {
-            document.getElementById('price-label-max').textContent = formatPrice(e.target.value);
-            applyFiltersAndRender();
-        });
-
-        // State & Municipality listener
-        bindIfExists('guest-state', 'change', populateMunicipalities);
-    });
-
-})();
 </script>
 </body>
 </html>
